@@ -78,10 +78,10 @@ namespace ReturnOrderPortal.Controllers
             {
                 client.BaseAddress = new Uri("http://localhost:.../");
                 client.DefaultRequestHeaders.Accept.Clear();
-                //sadclient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                //client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage response = client.GetAsync(string.Format("api/ComponentProcessingMicroservice/ComponentType={0}&Quantity={1}" , Request.ComponentType,Request.Quantity)).Result;
-                                                               // ""
+                                                               
                 if (response.IsSuccessStatusCode)
                 {
                     Results = response.Content.ReadAsStringAsync().Result;
