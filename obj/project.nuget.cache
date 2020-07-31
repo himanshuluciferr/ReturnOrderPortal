@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "FtqR6waFmd0ZSM41RXxpX9kXudtFZwNgdgROgtKnPq/SCowz9/D3FGVDw7p1+hIx4CIiyCItQwrz5eJX3SIzig==",
+  "success": true,
+  "projectFilePath": "F:\\Project\\ReturnOrderPortal\\ReturnOrderPortal.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HIMANSHU\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
+    "C:\\Users\\HIMANSHU\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
