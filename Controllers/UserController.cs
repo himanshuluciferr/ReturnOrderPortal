@@ -73,24 +73,24 @@ namespace ReturnOrderPortal.Controllers
 
         public ActionResult ComponentProcessing(Component Request)
         {
-            string Result;
+            string Results;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:.../");
                 client.DefaultRequestHeaders.Accept.Clear();
                 //client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/string"));
-                HttpResponseMessage response = client.GetAsync("api/ComponentProcessingMicroservice/?ComponentType" + Request.ComponentType).Result;
-
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = client.GetAsync(string.Format("api/ComponentProcessingMicroservice/ComponentType={0}&Quantity={1}" , Request.ComponentType,Request.Quantity)).Result;
+                                                               // ""
                 if (response.IsSuccessStatusCode)
                 {
-                    Result = response.Content.ReadAsStringAsync().Result;
+                    Results = response.Content.ReadAsStringAsync().Result;
                 }
                 else
-                    Result = null;
+                    Results = null;
             }
-            List<string> Response = JsonConvert.DeserializeObject<List<string>>(Result) ;
-            return View("ProcessResponse") ;
+            List<string> Response = JsonConvert.DeserializeObject<List<string>>(Results) ;
+            return View("ProcessResponse");
 
         }
 
