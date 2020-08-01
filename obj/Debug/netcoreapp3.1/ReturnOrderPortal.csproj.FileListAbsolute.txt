@@ -31,10 +31,9 @@ F:\Project\ReturnOrderPortal\bin\Debug\netcoreapp3.1\ReturnOrderPortal.pdb
 F:\Project\ReturnOrderPortal\bin\Debug\netcoreapp3.1\ReturnOrderPortal.Views.dll
 F:\Project\ReturnOrderPortal\bin\Debug\netcoreapp3.1\ReturnOrderPortal.Views.pdb
 F:\Project\ReturnOrderPortal\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\ReturnOrderPortal.csproj.CoreCompileInputs.cache
-F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\ReturnOrderPortal.MvcApplicationPartsAssemblyInfo.cache
 F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\ReturnOrderPortal.Views.pdb
 F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\ReturnOrderPortal.csproj.CopyComplete
 F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\ReturnOrderPortal.dll
 F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\ReturnOrderPortal.pdb
 F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\Razor\Views\User\ComponentProcessing.cshtml.g.cs
+F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\Razor\Views\User\ProcessResponse.cshtml.g.cs

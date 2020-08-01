@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -32,56 +34,43 @@ namespace ReturnOrderPortal.Controllers
             return View("ComponentProcessing",ComponentModel);
         }
 
-       /* [HttpPost("{menuItemid}")]
-        public Component Post(Component component)
+      
+
+
+        public dynamic ComponentProcessing(Component component)
         {
-
-            var Components = new Component()
-            {
-                Name = component.Name,
-                ContactNumber = component.ContactNumber,
-                CreditCardNumber = component.CreditCardNumber,
-                ComponentType = component.ComponentType,
-                ComponentName = component.ComponentName,
-                Quantity = component.Quantity,
-                IsPriorityRequest = component.IsPriorityRequest
-
-                menuItemName = getname(menuItemid, token)
-            };
-            return cart;
+            return component;
         }
-
-        private string getname(int menuItemid, string token)
-        {
-            string name;
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://52.154.173.160/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/string"));
-                HttpResponseMessage response = client.GetAsync("api/MenuItem/" + menuItemid).Result;
-                if (response.IsSuccessStatusCode)
-                {
-                    name = response.Content.ReadAsStringAsync().Result;
-                }
-                else
-                    name = null;
-            }
-            return name;
-        }*/
-
-        public ActionResult ComponentProcessing(Component Request)
+       /* public ActionResult ComponentProcessing(Component component)
         {
             string Results;
             using (var client = new HttpClient())
             {
+                var Components = new Component()
+                {
+                    Name = component.Name,
+                    ContactNumber = component.ContactNumber,
+                    CreditCardNumber = component.CreditCardNumber,
+                    ComponentType = component.ComponentType,
+                    ComponentName = component.ComponentName,
+                    Quantity = component.Quantity,
+                    IsPriorityRequest = component.IsPriorityRequest
+                };
+                //var json = JsonConvert.SerializeObject(Components);
+                //var stringContent = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
+
+                //var myContent = JsonConvert.SerializeObject(Components);
+                //var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+                //var byteContent = new ByteArrayContent(buffer);
+                //byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 client.BaseAddress = new Uri("http://localhost:.../");
                 client.DefaultRequestHeaders.Accept.Clear();
                 //client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.GetAsync(string.Format("api/ComponentProcessingMicroservice/ComponentType={0}&Quantity={1}" , Request.ComponentType,Request.Quantity)).Result;
-                                                               
+                //HttpResponseMessage response = client.GetAsync(string.Format("api/ComponentProcessingMicroservice/ComponentType={0}&Quantity={1}" , Request.ComponentType,Request.Quantity)).Result;
+                HttpResponseMessage response =  client.GetAsync("api/ComponentProcessingMicroservice/", component , new JsonMediaTypeFormatter()).Result;
+
+
                 if (response.IsSuccessStatusCode)
                 {
                     Results = response.Content.ReadAsStringAsync().Result;
@@ -92,7 +81,7 @@ namespace ReturnOrderPortal.Controllers
             List<string> Response = JsonConvert.DeserializeObject<List<string>>(Results) ;
             return View("ProcessResponse");
 
-        }
+        }*/
 
         static string GetToken(string url,User user)
         {
