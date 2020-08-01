@@ -59,6 +59,11 @@
         <td>@Html.TextBoxFor(a => a.Quantity)</td>
         <td>@Html.ValidationMessageFor(a => a.Quantity)</td>
     </tr>
+
+    <tr>
+        <td>@Html.LabelFor(a=> a.IsPriorityRequest)</td>
+        <td>@Html.CheckBoxFor(a=>a.IsPriorityRequest)</td>
+    </tr>
     <tr>
         <td></td>
         <td>

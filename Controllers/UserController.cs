@@ -31,7 +31,7 @@ namespace ReturnOrderPortal.Controllers
 
             //return Content("Login Successful");
             var ComponentModel = new Component();
-            return View("ComponentProcessing",ComponentModel);
+            return View("ComponentProcessing");
         }
 
       
@@ -39,7 +39,7 @@ namespace ReturnOrderPortal.Controllers
 
         public dynamic ComponentProcessing(Component component)
         {
-            return component;
+            return Content("hjgj");
         }
        /* public ActionResult ComponentProcessing(Component component)
         {

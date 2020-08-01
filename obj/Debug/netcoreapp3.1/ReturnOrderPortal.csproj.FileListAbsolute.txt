@@ -37,3 +37,7 @@ F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\ReturnOrderPortal.dll
 F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\ReturnOrderPortal.pdb
 F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\Razor\Views\User\ComponentProcessing.cshtml.g.cs
 F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\Razor\Views\User\ProcessResponse.cshtml.g.cs
+F:\Project\ReturnOrderPortal\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+F:\Project\ReturnOrderPortal\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\ReturnOrderPortal.csproj.CoreCompileInputs.cache
+F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\ReturnOrderPortal.MvcApplicationPartsAssemblyInfo.cache
