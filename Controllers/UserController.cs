@@ -19,6 +19,7 @@ namespace ReturnOrderPortal.Controllers
     public class UserController : Controller
     {
         string TokenForLogin;
+        
         public IActionResult Login()
         {
             var user = new User();
@@ -102,12 +103,12 @@ namespace ReturnOrderPortal.Controllers
                 IsPriorityRequest = component.IsPriorityRequest
             };
                 var myJSON = JsonConvert.SerializeObject(components);
-                client.BaseAddress = new Uri("http://localhost:.../");
+                client.BaseAddress = new Uri("http://localhost:/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 //client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-               // HttpResponseMessage response = client.GetAsync(string.Format("api/ComponentProcessingMicroservice/Name={0}&ContactNumber={1}&CreditCardNumber={2}&ComponentType={3}&ComponentName={4}&Quantity={5}&IsPriorityRequest={6}", Request.Name, Request.ContactNumber, Request.CreditCardNumber,Request.ComponentType,Request.ComponentName, Request.Quantity, Request.IsPriorityRequest)).Result;
-                 HttpResponseMessage response = client.GetAsync(myJSON).Result;
+               //HttpResponseMessage response = client.GetAsync(string.Format("api/ComponentProcessingMicroservice/Name={0}&ContactNumber={1}&CreditCardNumber={2}&ComponentType={3}&ComponentName={4}&Quantity={5}&IsPriorityRequest={6}", Request.Name, Request.ContactNumber, Request.CreditCardNumber,Request.ComponentType,Request.ComponentName, Request.Quantity, Request.IsPriorityRequest)).Result;
+                 HttpResponseMessage response = client.GetAsync("api/ComponentProcessingMicroservice/"+ myJSON).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     Results = response.Content.ReadAsStringAsync().Result;
@@ -115,10 +116,20 @@ namespace ReturnOrderPortal.Controllers
                 else
                     Results = null;
             }
-            List<string> Response = JsonConvert.DeserializeObject<List<string>>(Results);
-            return View("ProcessResponse");
+            var Response = JsonConvert.DeserializeObject<ProcessResponse>(Results);
+            /* ProcessResponse Response = new ProcessResponse
+            {
+                RequestId = 1,
+                PackagingAndDeliveryCharge = 10,
+                ProcessingCharge = 9,
+                DateOfDelivery = Convert.ToDateTime("10/01/2011")
+            };*/
+            return View("ProcessResponse",Response);
 
         }
+
+
+        
 
        /*public ActionResult ComponentProcessing(Component component)
         {
@@ -154,6 +165,15 @@ namespace ReturnOrderPortal.Controllers
             List<string> Response = JsonConvert.DeserializeObject<List<string>>(Results);
             return View("ProcessResponse");
         }*/
+
+
+      
+
+
+        public ActionResult Confirmation()
+        {
+            return View();
+        }
 
         static string GetToken(string url,User user)
         {
