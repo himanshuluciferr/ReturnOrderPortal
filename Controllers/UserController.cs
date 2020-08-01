@@ -7,6 +7,8 @@ using System.Net.Http.Headers;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Helpers;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -85,17 +87,27 @@ namespace ReturnOrderPortal.Controllers
 
          }*/
 
-        /*public ActionResult ComponentProcessing(Component Request)
+        public ActionResult ComponentProcessing(Component component)
         {
             string Results;
             using (var client = new HttpClient())
             {
+            Component components = new Component {
+                Name = component.Name,
+                ContactNumber = component.ContactNumber,
+                CreditCardNumber = component.CreditCardNumber,
+                ComponentType = component.ComponentType,
+                ComponentName = component.ComponentName,
+                Quantity = component.Quantity,
+                IsPriorityRequest = component.IsPriorityRequest
+            };
+                var myJSON = JsonConvert.SerializeObject(components);
                 client.BaseAddress = new Uri("http://localhost:.../");
                 client.DefaultRequestHeaders.Accept.Clear();
                 //client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.GetAsync(string.Format("api/ComponentProcessingMicroservice/Name={0}&ContactNumber={1}&CreditCardNumber={2}&ComponentType={3}&ComponentName={4}&Quantity={5}&IsPriorityRequest={6}", Request.Name, Request.ContactNumber, Request.CreditCardNumber,Request.ComponentType,Request.ComponentName, Request.Quantity, Request.IsPriorityRequest)).Result;
-
+               // HttpResponseMessage response = client.GetAsync(string.Format("api/ComponentProcessingMicroservice/Name={0}&ContactNumber={1}&CreditCardNumber={2}&ComponentType={3}&ComponentName={4}&Quantity={5}&IsPriorityRequest={6}", Request.Name, Request.ContactNumber, Request.CreditCardNumber,Request.ComponentType,Request.ComponentName, Request.Quantity, Request.IsPriorityRequest)).Result;
+                 HttpResponseMessage response = client.GetAsync(myJSON).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     Results = response.Content.ReadAsStringAsync().Result;
@@ -106,9 +118,9 @@ namespace ReturnOrderPortal.Controllers
             List<string> Response = JsonConvert.DeserializeObject<List<string>>(Results);
             return View("ProcessResponse");
 
-        }*/
+        }
 
-        public ActionResult ComponentProcessing(Component component)
+       /*public ActionResult ComponentProcessing(Component component)
         {
             string Results;
             HttpClient client = new HttpClient();
@@ -141,7 +153,7 @@ namespace ReturnOrderPortal.Controllers
             }
             List<string> Response = JsonConvert.DeserializeObject<List<string>>(Results);
             return View("ProcessResponse");
-        }
+        }*/
 
         static string GetToken(string url,User user)
         {

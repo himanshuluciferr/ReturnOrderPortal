@@ -39,5 +39,9 @@ F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\Razor\Views\User\ComponentP
 F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\Razor\Views\User\ProcessResponse.cshtml.g.cs
 F:\Project\ReturnOrderPortal\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 F:\Project\ReturnOrderPortal\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
-F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\ReturnOrderPortal.csproj.CoreCompileInputs.cache
-F:\Project\ReturnOrderPortal\obj\Debug\netcoreapp3.1\ReturnOrderPortal.MvcApplicationPartsAssemblyInfo.cache
+F:\Project\ReturnOrderPortal\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
+F:\Project\ReturnOrderPortal\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
+F:\Project\ReturnOrderPortal\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
+F:\Project\ReturnOrderPortal\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
+F:\Project\ReturnOrderPortal\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
+F:\Project\ReturnOrderPortal\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
