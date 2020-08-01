@@ -85,7 +85,7 @@ namespace ReturnOrderPortal.Controllers
 
          }*/
 
-        public ActionResult ComponentProcessing(Component Request)
+        /*public ActionResult ComponentProcessing(Component Request)
         {
             string Results;
             using (var client = new HttpClient())
@@ -106,6 +106,41 @@ namespace ReturnOrderPortal.Controllers
             List<string> Response = JsonConvert.DeserializeObject<List<string>>(Results);
             return View("ProcessResponse");
 
+        }*/
+
+        public ActionResult ComponentProcessing(Component component)
+        {
+            string Results;
+            HttpClient client = new HttpClient();
+            Uri baseAddress = new Uri("http://localhost:2939/");
+            client.BaseAddress = baseAddress;
+
+            JArray paramList = new JArray();
+            Component components = new Component {
+                Name = component.Name,
+                ContactNumber = component.ContactNumber,
+                CreditCardNumber = component.CreditCardNumber,
+                ComponentType = component.ComponentType,
+                ComponentName = component.ComponentName,
+                Quantity = component.Quantity,
+                IsPriorityRequest = component.IsPriorityRequest
+            };
+            
+
+            paramList.Add(JsonConvert.SerializeObject(components));
+           
+
+            HttpResponseMessage response = client.PostAsJsonAsync("api/ComponentProcessingMicroservice/", paramList).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                Results = response.Content.ReadAsStringAsync().Result;
+            }
+            else
+            {
+                Results = null;
+            }
+            List<string> Response = JsonConvert.DeserializeObject<List<string>>(Results);
+            return View("ProcessResponse");
         }
 
         static string GetToken(string url,User user)
