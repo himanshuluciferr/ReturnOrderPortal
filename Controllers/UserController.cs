@@ -28,7 +28,7 @@ namespace ReturnOrderPortal.Controllers
 
         public ActionResult Authentication(User user)
         {
-            TokenForLogin = GetToken("https://localhost:44375/api/token", user);
+            TokenForLogin = GetToken("https://localhost:44371/api/token", user);
             if (TokenForLogin == null)
                 return Unauthorized();
 
@@ -88,35 +88,41 @@ namespace ReturnOrderPortal.Controllers
 
          }*/
 
-        public ActionResult ComponentProcessing(Component component)
+        public async Task<ActionResult> ComponentProcessing(Component component)
         {
-            string Results;
+           string Results;
             using (var client = new HttpClient())
             {
-            Component components = new Component {
-                Name = component.Name,
-                ContactNumber = component.ContactNumber,
-                CreditCardNumber = component.CreditCardNumber,
-                ComponentType = component.ComponentType,
-                ComponentName = component.ComponentName,
-                Quantity = component.Quantity,
-                IsPriorityRequest = component.IsPriorityRequest
-            };
+                Component components = new Component
+                {
+                    Name = component.Name,
+                    ContactNumber = component.ContactNumber,
+                    CreditCardNumber = component.CreditCardNumber,
+                    ComponentType = component.ComponentType,
+                    ComponentName = component.ComponentName,
+                    Quantity = component.Quantity,
+                    IsPriorityRequest = component.IsPriorityRequest
+                };
                 var myJSON = JsonConvert.SerializeObject(components);
-                client.BaseAddress = new Uri("http://localhost:/");
-                client.DefaultRequestHeaders.Accept.Clear();
+
+                //client.BaseAddress = new Uri("https://localhost:44380/");
+                //client.DefaultRequestHeaders.Accept.Clear();
                 //client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-               //HttpResponseMessage response = client.GetAsync(string.Format("api/ComponentProcessingMicroservice/Name={0}&ContactNumber={1}&CreditCardNumber={2}&ComponentType={3}&ComponentName={4}&Quantity={5}&IsPriorityRequest={6}", Request.Name, Request.ContactNumber, Request.CreditCardNumber,Request.ComponentType,Request.ComponentName, Request.Quantity, Request.IsPriorityRequest)).Result;
-                 HttpResponseMessage response = client.GetAsync("api/ComponentProcessingMicroservice/"+ myJSON).Result;
+                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //client.DefaultRequestHeaders.Add("Content-Type", "application/json;charset=utf8");
+                string uri = string.Format("https://localhost:44380/api/ComponentProcessingMicroservice?json={0}",myJSON);
+                HttpResponseMessage response =  await client.GetAsync(uri);
+                // HttpResponseMessage response = await client.GetAsync("api/ComponentProcessingMicroservice/"+ myJSON);
                 if (response.IsSuccessStatusCode)
                 {
-                    Results = response.Content.ReadAsStringAsync().Result;
+                    Results = await response.Content.ReadAsStringAsync();
                 }
                 else
+                {
                     Results = null;
+                }
             }
-            var Response = JsonConvert.DeserializeObject<ProcessResponse>(Results);
+           // var Response = JsonConvert.DeserializeObject<ProcessResponse>(Results);
             /* ProcessResponse Response = new ProcessResponse
             {
                 RequestId = 1,
@@ -125,6 +131,7 @@ namespace ReturnOrderPortal.Controllers
                 DateOfDelivery = Convert.ToDateTime("10/01/2011")
             };*/
             return View("ProcessResponse",Response);
+
 
         }
 
@@ -172,8 +179,30 @@ namespace ReturnOrderPortal.Controllers
 
         public ActionResult Confirmation()
         {
-            return View();
+            /*var confirm = "True";
+            string Confirmed;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                //client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //HttpResponseMessage response = client.GetAsync(string.Format("api/ComponentProcessingMicroservice/Name={0}&ContactNumber={1}&CreditCardNumber={2}&ComponentType={3}&ComponentName={4}&Quantity={5}&IsPriorityRequest={6}", Request.Name, Request.ContactNumber, Request.CreditCardNumber,Request.ComponentType,Request.ComponentName, Request.Quantity, Request.IsPriorityRequest)).Result;
+                HttpResponseMessage response = client.GetAsync("api/ComponentProcessingMicroservice/" + confirm).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    Confirmed = response.Content.ReadAsStringAsync().Result;
+                }
+                else
+                {
+                    Confirmed = null;
+                }
+            }*/
+            return View("Confirmation");
         }
+
+            
+        
 
         static string GetToken(string url,User user)
         {

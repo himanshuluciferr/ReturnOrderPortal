@@ -16,4 +16,7 @@
 <br />
 <h3>Date Of Delivery:@Model.DateOfDelivery</h3>
 
-@Html.ActionLink("Confirm","Confirmation","User")
+@using (Html.BeginForm("Confirmation", "User", FormMethod.Post))
+{
+    <input type="submit" value="Confirm Payment" />
+}
