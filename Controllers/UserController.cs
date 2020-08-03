@@ -110,12 +110,14 @@ namespace ReturnOrderPortal.Controllers
                     Quantity = component.Quantity,
                     IsPriorityRequest = component.IsPriorityRequest
                 };
-                
 
+                //client.DefaultRequestHeaders.Accept.Clear();
+                //client.DefaultRequestHeaders.Add("Authorization", "Bearer " + TokenForLogin);
+                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var myJSON = JsonConvert.SerializeObject(components);
 
                 
-                string uri = string.Format("https://localhost:44393/api/ComponentProcessingMicroservice?json={0}", myJSON);
+                string uri = string.Format("https://localhost:44346/api/ComponentProcessingMicroservice?json={0}", myJSON);
 
                 HttpResponseMessage response =  await client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
@@ -135,84 +137,116 @@ namespace ReturnOrderPortal.Controllers
                 ProcessingCharge = 9,
                 DateOfDelivery = Convert.ToDateTime("10/01/2011")
             };*/
+            
             return View("ProcessResponse",Response);
 
 
         }
 
 
-        
-
-       /*public ActionResult ComponentProcessing(Component component)
-        {
-            string Results;
-            HttpClient client = new HttpClient();
-            Uri baseAddress = new Uri("http://localhost:2939/");
-            client.BaseAddress = baseAddress;
-
-            JArray paramList = new JArray();
-            Component components = new Component {
-                Name = component.Name,
-                ContactNumber = component.ContactNumber,
-                CreditCardNumber = component.CreditCardNumber,
-                ComponentType = component.ComponentType,
-                ComponentName = component.ComponentName,
-                Quantity = component.Quantity,
-                IsPriorityRequest = component.IsPriorityRequest
-            };
-            
-
-            paramList.Add(JsonConvert.SerializeObject(components));
-           
-
-            HttpResponseMessage response = client.PostAsJsonAsync("api/ComponentProcessingMicroservice/", paramList).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                Results = response.Content.ReadAsStringAsync().Result;
-            }
-            else
-            {
-                Results = null;
-            }
-            List<string> Response = JsonConvert.DeserializeObject<List<string>>(Results);
-            return View("ProcessResponse");
-        }*/
 
 
-      
+        /*public ActionResult ComponentProcessing(Component component)
+         {
+             string Results;
+             HttpClient client = new HttpClient();
+             Uri baseAddress = new Uri("http://localhost:2939/");
+             client.BaseAddress = baseAddress;
+
+             JArray paramList = new JArray();
+             Component components = new Component {
+                 Name = component.Name,
+                 ContactNumber = component.ContactNumber,
+                 CreditCardNumber = component.CreditCardNumber,
+                 ComponentType = component.ComponentType,
+                 ComponentName = component.ComponentName,
+                 Quantity = component.Quantity,
+                 IsPriorityRequest = component.IsPriorityRequest
+             };
 
 
-        public async Task<ActionResult> Confirmation()
+             paramList.Add(JsonConvert.SerializeObject(components));
+
+
+             HttpResponseMessage response = client.PostAsJsonAsync("api/ComponentProcessingMicroservice/", paramList).Result;
+             if (response.IsSuccessStatusCode)
+             {
+                 Results = response.Content.ReadAsStringAsync().Result;
+             }
+             else
+             {
+                 Results = null;
+             }
+             List<string> Response = JsonConvert.DeserializeObject<List<string>>(Results);
+             return View("ProcessResponse");
+         }*/
+
+
+
+
+       /* public async Task<ActionResult> Confirmation()
         {
             _log4net.Info("Payment Confirmation initiated");
-            var confirm = "True";
-            dynamic details= "";
+            string confirm = "true";
+            dynamic details = "";
             var abc = JsonConvert.SerializeObject(confirm);
             var data = new StringContent(abc, Encoding.UTF8, "application/json");
 
             using (var client = new HttpClient())
             {
 
+                HttpResponseMessage response = await client.GetAsync(string.Format("https://localhost:44346/api/ComponentProcessingMicroservice/True?message={0}", confirm));
+               // var response = await client.PostAsync("https://localhost:44346/api/ComponentProcessingMicroservice", data);
 
-                var response = await client.PostAsync("https://localhost:44360/api/ProcessPayment", data);
                 string name = response.Content.ReadAsStringAsync().Result;
-                 details = JObject.Parse(name);
                 
+
             }
             string x = (string)details;
             if (x == "Success")
                 return View("Confirmation");
-            else 
+            else
                 return View("Failed");
+
+        }*/
+       public async Task<ActionResult> Confirmation()
+        {
+            _log4net.Info("Payment Confirmation initiated");
+            Submission res = new Submission()
+            {
+                Result = "True"
+            };
+            string name = "";
+            //string confirm = "true";
+             dynamic details= "";
+             var abc = JsonConvert.SerializeObject(res);
+            var data = new StringContent(abc, Encoding.UTF8, "application/json");
+
+             using (var client = new HttpClient())
+             {
+
+
+                 var response = await client.PostAsync("https://localhost:44346/api/ComponentProcessingMicroservice", data);
+               
+                  name = response.Content.ReadAsStringAsync().Result;
+                  
+
+             }
+             string x = (string)name;
+             if (x == "Success")
+                 return View("Confirmation");
+             else 
+                 return View("Failed");
+            
         }
 
         /*public async Task<ActionResult> Confirmation()
         {
-            var confirm = "True";
+            /*var confirm = "True";
             string Results;
             using (var client = new HttpClient())
             {
-                string uri = string.Format("https://localhost:44380/api/ComponentProcessingMicroservice?json={0}", confirm );
+                string uri = string.Format("https://localhost:44346/api/ComponentProcessingMicroservice?json={0}", confirm );
                 HttpResponseMessage response = await client.GetAsync(uri);
                 
                 if (response.IsSuccessStatusCode)
@@ -225,7 +259,7 @@ namespace ReturnOrderPortal.Controllers
                 }
             }
             // var Response = JsonConvert.DeserializeObject<ProcessResponse>(Results);
-            /* ProcessResponse Response = new ProcessResponse
+            //ProcessResponse Response = new ProcessResponse
             {
                 RequestId = 1,
                 PackagingAndDeliveryCharge = 10,
