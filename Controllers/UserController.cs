@@ -16,22 +16,28 @@ using ReturnOrderPortal.Models;
 
 namespace ReturnOrderPortal.Controllers
 {
+   
     public class UserController : Controller
     {
+        static readonly log4net.ILog _log4net = log4net.LogManager.GetLogger(typeof(UserController));
         string TokenForLogin;
         
         public IActionResult Login()
         {
+            _log4net.Info("Login initiated");
             var user = new User();
             return View("Login",user);
         }
 
         public ActionResult Authentication(User user)
         {
-            TokenForLogin = GetToken("https://localhost:44371/api/token", user);
+            _log4net.Info("Authentication initiated");
+            TokenForLogin = GetToken("http://localhost:65486/api/token", user);
             if (TokenForLogin == null)
-                return Unauthorized();
-
+            {
+                ViewBag.Message = String.Format("Invalid Username Or Password");
+                return View("Login", user);
+            }
             //return Content("Login Successful");
             var ComponentModel = new Component();
             return View("ComponentProcessing");
@@ -90,6 +96,7 @@ namespace ReturnOrderPortal.Controllers
 
         public async Task<ActionResult> ComponentProcessing(Component component)
         {
+            _log4net.Info("ComponentProcessingMicroservice initiated");
            string Results;
             using (var client = new HttpClient())
             {
@@ -103,16 +110,14 @@ namespace ReturnOrderPortal.Controllers
                     Quantity = component.Quantity,
                     IsPriorityRequest = component.IsPriorityRequest
                 };
+                
+
                 var myJSON = JsonConvert.SerializeObject(components);
 
-                //client.BaseAddress = new Uri("https://localhost:44380/");
-                //client.DefaultRequestHeaders.Accept.Clear();
-                //client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                //client.DefaultRequestHeaders.Add("Content-Type", "application/json;charset=utf8");
-                string uri = string.Format("https://localhost:44380/api/ComponentProcessingMicroservice?json={0}",myJSON);
+                
+                string uri = string.Format("https://localhost:44393/api/ComponentProcessingMicroservice?json={0}", myJSON);
+
                 HttpResponseMessage response =  await client.GetAsync(uri);
-                // HttpResponseMessage response = await client.GetAsync("api/ComponentProcessingMicroservice/"+ myJSON);
                 if (response.IsSuccessStatusCode)
                 {
                     Results = await response.Content.ReadAsStringAsync();
@@ -122,8 +127,8 @@ namespace ReturnOrderPortal.Controllers
                     Results = null;
                 }
             }
-           // var Response = JsonConvert.DeserializeObject<ProcessResponse>(Results);
-            /* ProcessResponse Response = new ProcessResponse
+            var Response = JsonConvert.DeserializeObject<ProcessResponse>(Results);
+           /* ProcessResponse Response = new ProcessResponse
             {
                 RequestId = 1,
                 PackagingAndDeliveryCharge = 10,
@@ -177,32 +182,63 @@ namespace ReturnOrderPortal.Controllers
       
 
 
-        public ActionResult Confirmation()
+        public async Task<ActionResult> Confirmation()
         {
-            /*var confirm = "True";
-            string Confirmed;
+            _log4net.Info("Payment Confirmation initiated");
+            var confirm = "True";
+            dynamic details= "";
+            var abc = JsonConvert.SerializeObject(confirm);
+            var data = new StringContent(abc, Encoding.UTF8, "application/json");
+
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                //client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                //HttpResponseMessage response = client.GetAsync(string.Format("api/ComponentProcessingMicroservice/Name={0}&ContactNumber={1}&CreditCardNumber={2}&ComponentType={3}&ComponentName={4}&Quantity={5}&IsPriorityRequest={6}", Request.Name, Request.ContactNumber, Request.CreditCardNumber,Request.ComponentType,Request.ComponentName, Request.Quantity, Request.IsPriorityRequest)).Result;
-                HttpResponseMessage response = client.GetAsync("api/ComponentProcessingMicroservice/" + confirm).Result;
+
+
+                var response = await client.PostAsync("https://localhost:44360/api/ProcessPayment", data);
+                string name = response.Content.ReadAsStringAsync().Result;
+                 details = JObject.Parse(name);
+                
+            }
+            string x = (string)details;
+            if (x == "Success")
+                return View("Confirmation");
+            else 
+                return View("Failed");
+        }
+
+        /*public async Task<ActionResult> Confirmation()
+        {
+            var confirm = "True";
+            string Results;
+            using (var client = new HttpClient())
+            {
+                string uri = string.Format("https://localhost:44380/api/ComponentProcessingMicroservice?json={0}", confirm );
+                HttpResponseMessage response = await client.GetAsync(uri);
+                
                 if (response.IsSuccessStatusCode)
                 {
-                    Confirmed = response.Content.ReadAsStringAsync().Result;
+                    Results = await response.Content.ReadAsStringAsync();
                 }
                 else
                 {
-                    Confirmed = null;
+                    Results = null;
                 }
-            }*/
+            }
+            // var Response = JsonConvert.DeserializeObject<ProcessResponse>(Results);
+            /* ProcessResponse Response = new ProcessResponse
+            {
+                RequestId = 1,
+                PackagingAndDeliveryCharge = 10,
+                ProcessingCharge = 9,
+                DateOfDelivery = Convert.ToDateTime("10/01/2011")
+            };
             return View("Confirmation");
-        }
 
-            
-        
+
+        }*/
+
+
+
 
         static string GetToken(string url,User user)
         {

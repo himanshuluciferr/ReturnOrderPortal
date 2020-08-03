@@ -2,7 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-@model ReturnOrderPortal.Models.User 
+@model ReturnOrderPortal.Models.User
 @{
     ViewBag.Title = "login";
 }
@@ -14,13 +14,7 @@
     //this is for create form tag
     @Html.AntiForgeryToken() // this is for prevent CSRF attack
     @Html.ValidationSummary(true)
-    if (@ViewBag.Message != null)
-    {
-
-        <div style="border:1px solid red">
-            @ViewBag.Message
-        </div>
-    }
+  
 
     <table>
         <tr>
@@ -48,3 +42,13 @@
         </tr>
     </table>
 }
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+
+}  

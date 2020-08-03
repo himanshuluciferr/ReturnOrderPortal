@@ -12,7 +12,7 @@ namespace ReturnOrderPortal.Models
 
         public string ContactNumber { get; set; }
 
-        public string CreditCardNumber { get; set; }
+        public long CreditCardNumber { get; set; }
 
         public string ComponentType { get; set; }
 
