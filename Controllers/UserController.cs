@@ -23,7 +23,7 @@ namespace ReturnOrderPortal.Controllers
         static readonly log4net.ILog _log4net = log4net.LogManager.GetLogger(typeof(UserController));
         static string TokenForLogin;
         private readonly ProcessContext db;
-        static ProcessResponse Response = new ProcessResponse();
+        public static ProcessResponse Response = new ProcessResponse();
 
 
         public UserController(ProcessContext context)
