@@ -12,6 +12,7 @@ using Microsoft.Ajax.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using ReturnOrderPortal.DataContext;
 using ReturnOrderPortal.Models;
 
 namespace ReturnOrderPortal.Controllers
@@ -20,8 +21,16 @@ namespace ReturnOrderPortal.Controllers
     public class UserController : Controller
     {
         static readonly log4net.ILog _log4net = log4net.LogManager.GetLogger(typeof(UserController));
-        string TokenForLogin;
-        
+        static string  TokenForLogin;
+        private readonly ProcessContext db;
+
+
+
+        public UserController(ProcessContext context)
+        {
+            db = context;
+        }
+
         public IActionResult Login()
         {
             _log4net.Info("Login initiated");
@@ -112,12 +121,12 @@ namespace ReturnOrderPortal.Controllers
                 };
 
                 //client.DefaultRequestHeaders.Accept.Clear();
-                //client.DefaultRequestHeaders.Add("Authorization", "Bearer " + TokenForLogin);
+               // client.DefaultRequestHeaders.Add("Authorization", "Bearer " + TokenForLogin);
                 //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var myJSON = JsonConvert.SerializeObject(components);
 
                 
-                string uri = string.Format("https://localhost:44346/api/ComponentProcessingMicroservice?json={0}", myJSON);
+                string uri = string.Format("https://localhost:44392/api/ComponentProcessingMicroservice?json={0}", myJSON);
 
                 HttpResponseMessage response =  await client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
@@ -130,14 +139,15 @@ namespace ReturnOrderPortal.Controllers
                 }
             }
             var Response = JsonConvert.DeserializeObject<ProcessResponse>(Results);
-           /* ProcessResponse Response = new ProcessResponse
-            {
-                RequestId = 1,
-                PackagingAndDeliveryCharge = 10,
-                ProcessingCharge = 9,
-                DateOfDelivery = Convert.ToDateTime("10/01/2011")
-            };*/
-            
+            /* ProcessResponse Response = new ProcessResponse
+             {
+                 RequestId = 1,
+                 PackagingAndDeliveryCharge = 10,
+                 ProcessingCharge = 9,
+                 DateOfDelivery = Convert.ToDateTime("10/01/2011")
+             };*/
+            db.ProcessDb.Add(Response);
+            db.SaveChanges();
             return View("ProcessResponse",Response);
 
 
@@ -226,7 +236,7 @@ namespace ReturnOrderPortal.Controllers
              {
 
 
-                 var response = await client.PostAsync("https://localhost:44346/api/ComponentProcessingMicroservice", data);
+                 var response = await client.PostAsync("https://localhost:44392/api/ComponentProcessingMicroservice", data);
                
                   name = response.Content.ReadAsStringAsync().Result;
                   

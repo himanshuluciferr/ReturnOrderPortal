@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Project\\ReturnOrderPortal\\ReturnOrderPortal.csproj": {}
+    "F:\\ReturnOrderPortal\\ReturnOrderPortal.csproj": {}
   },
   "projects": {
-    "F:\\Project\\ReturnOrderPortal\\ReturnOrderPortal.csproj": {
+    "F:\\ReturnOrderPortal\\ReturnOrderPortal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Project\\ReturnOrderPortal\\ReturnOrderPortal.csproj",
+        "projectUniqueName": "F:\\ReturnOrderPortal\\ReturnOrderPortal.csproj",
         "projectName": "ReturnOrderPortal",
-        "projectPath": "F:\\Project\\ReturnOrderPortal\\ReturnOrderPortal.csproj",
+        "projectPath": "F:\\ReturnOrderPortal\\ReturnOrderPortal.csproj",
         "packagesPath": "C:\\Users\\HIMANSHU\\.nuget\\packages\\",
-        "outputPath": "F:\\Project\\ReturnOrderPortal\\obj\\",
+        "outputPath": "F:\\ReturnOrderPortal\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -49,6 +49,20 @@
             "Microsoft.AspNet.WebPages": {
               "target": "Package",
               "version": "[3.2.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.6, )"
             },
             "Microsoft.Extensions.Logging.Log4Net.AspNetCore": {
               "target": "Package",
