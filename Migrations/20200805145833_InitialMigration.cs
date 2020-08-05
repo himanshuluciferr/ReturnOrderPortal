@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ReturnOrderPortal.Migrations
 {
-    public partial class keyadded : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,8 +11,7 @@ namespace ReturnOrderPortal.Migrations
                 name: "ProcessDb",
                 columns: table => new
                 {
-                    RequestId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RequestId = table.Column<int>(nullable: false),
                     ProcessingCharge = table.Column<int>(nullable: false),
                     PackagingAndDeliveryCharge = table.Column<int>(nullable: false),
                     DateOfDelivery = table.Column<DateTime>(nullable: false)

@@ -17,13 +17,13 @@ using ReturnOrderPortal.Models;
 
 namespace ReturnOrderPortal.Controllers
 {
-   
+
     public class UserController : Controller
     {
         static readonly log4net.ILog _log4net = log4net.LogManager.GetLogger(typeof(UserController));
-        static string  TokenForLogin;
+        static string TokenForLogin;
         private readonly ProcessContext db;
-
+        static ProcessResponse Response = new ProcessResponse();
 
 
         public UserController(ProcessContext context)
@@ -35,7 +35,7 @@ namespace ReturnOrderPortal.Controllers
         {
             _log4net.Info("Login initiated");
             var user = new User();
-            return View("Login",user);
+            return View("Login", user);
         }
 
         public ActionResult Authentication(User user)
@@ -106,7 +106,7 @@ namespace ReturnOrderPortal.Controllers
         public async Task<ActionResult> ComponentProcessing(Component component)
         {
             _log4net.Info("ComponentProcessingMicroservice initiated");
-           string Results;
+            string Results;
             using (var client = new HttpClient())
             {
                 Component components = new Component
@@ -120,15 +120,15 @@ namespace ReturnOrderPortal.Controllers
                     IsPriorityRequest = component.IsPriorityRequest
                 };
 
-               // client.DefaultRequestHeaders.Accept.Clear();
-                //client.DefaultRequestHeaders.Add("Authorization", "Bearer " + TokenForLogin);
+                // client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + TokenForLogin);
                 //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var myJSON = JsonConvert.SerializeObject(components);
 
-                
+
                 string uri = string.Format("https://localhost:44392/api/ComponentProcessingMicroservice?json={0}", myJSON);
 
-                HttpResponseMessage response =  await client.GetAsync(uri);
+                HttpResponseMessage response = await client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
                     Results = await response.Content.ReadAsStringAsync();
@@ -138,7 +138,7 @@ namespace ReturnOrderPortal.Controllers
                     Results = null;
                 }
             }
-            var Response = JsonConvert.DeserializeObject<ProcessResponse>(Results);
+             Response = JsonConvert.DeserializeObject<ProcessResponse>(Results);
             /* ProcessResponse Response = new ProcessResponse
              {
                  RequestId = 1,
@@ -146,9 +146,8 @@ namespace ReturnOrderPortal.Controllers
                  ProcessingCharge = 9,
                  DateOfDelivery = Convert.ToDateTime("10/01/2011")
              };*/
-            db.ProcessDb.Add(Response);
-            db.SaveChanges();
-            return View("ProcessResponse",Response);
+            
+            return View("ProcessResponse", Response);
 
 
         }
@@ -194,32 +193,32 @@ namespace ReturnOrderPortal.Controllers
 
 
 
-       /* public async Task<ActionResult> Confirmation()
-        {
-            _log4net.Info("Payment Confirmation initiated");
-            string confirm = "true";
-            dynamic details = "";
-            var abc = JsonConvert.SerializeObject(confirm);
-            var data = new StringContent(abc, Encoding.UTF8, "application/json");
+        /* public async Task<ActionResult> Confirmation()
+         {
+             _log4net.Info("Payment Confirmation initiated");
+             string confirm = "true";
+             dynamic details = "";
+             var abc = JsonConvert.SerializeObject(confirm);
+             var data = new StringContent(abc, Encoding.UTF8, "application/json");
 
-            using (var client = new HttpClient())
-            {
+             using (var client = new HttpClient())
+             {
 
-                HttpResponseMessage response = await client.GetAsync(string.Format("https://localhost:44346/api/ComponentProcessingMicroservice/True?message={0}", confirm));
-               // var response = await client.PostAsync("https://localhost:44346/api/ComponentProcessingMicroservice", data);
+                 HttpResponseMessage response = await client.GetAsync(string.Format("https://localhost:44346/api/ComponentProcessingMicroservice/True?message={0}", confirm));
+                // var response = await client.PostAsync("https://localhost:44346/api/ComponentProcessingMicroservice", data);
 
-                string name = response.Content.ReadAsStringAsync().Result;
-                
+                 string name = response.Content.ReadAsStringAsync().Result;
 
-            }
-            string x = (string)details;
-            if (x == "Success")
-                return View("Confirmation");
-            else
-                return View("Failed");
 
-        }*/
-       public async Task<ActionResult> Confirmation()
+             }
+             string x = (string)details;
+             if (x == "Success")
+                 return View("Confirmation");
+             else
+                 return View("Failed");
+
+         }*/
+        public async Task<ActionResult> Confirmation()
         {
             _log4net.Info("Payment Confirmation initiated");
             Submission res = new Submission()
@@ -228,26 +227,30 @@ namespace ReturnOrderPortal.Controllers
             };
             string name = "";
             //string confirm = "true";
-             dynamic details= "";
-             var abc = JsonConvert.SerializeObject(res);
+            dynamic details = "";
+            var abc = JsonConvert.SerializeObject(res);
             var data = new StringContent(abc, Encoding.UTF8, "application/json");
 
-             using (var client = new HttpClient())
-             {
+            using (var client = new HttpClient())
+            {
 
 
-                 var response = await client.PostAsync("https://localhost:44392/api/ComponentProcessingMicroservice", data);
-               
-                  name = response.Content.ReadAsStringAsync().Result;
-                  
+                var response = await client.PostAsync("https://localhost:44392/api/ComponentProcessingMicroservice", data);
 
-             }
-             string x = (string)name;
-             if (x == "Success")
-                 return View("Confirmation");
-             else 
-                 return View("Failed");
-            
+                name = response.Content.ReadAsStringAsync().Result;
+
+
+            }
+            string x = (string)name;
+            if (x == "Success")
+            {
+                db.ProcessDb.Add(Response);
+                db.SaveChanges();
+                return View("Confirmation");
+            }
+            else
+                return View("Failed");
+
         }
 
         /*public async Task<ActionResult> Confirmation()
@@ -284,13 +287,13 @@ namespace ReturnOrderPortal.Controllers
 
 
 
-        static string GetToken(string url,User user)
+        static string GetToken(string url, User user)
         {
             //var user = new User { Name = "admin" , Password = "admin"};
             var json = JsonConvert.SerializeObject(user);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-            using ( var client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 var response = client.PostAsync(url, data).Result;
                 string name = response.Content.ReadAsStringAsync().Result;

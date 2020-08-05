@@ -10,8 +10,8 @@ using ReturnOrderPortal.DataContext;
 namespace ReturnOrderPortal.Migrations
 {
     [DbContext(typeof(ProcessContext))]
-    [Migration("20200805051910_keyadded")]
-    partial class keyadded
+    [Migration("20200805145833_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,9 +24,7 @@ namespace ReturnOrderPortal.Migrations
             modelBuilder.Entity("ReturnOrderPortal.Models.ProcessResponse", b =>
                 {
                     b.Property<int>("RequestId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DateOfDelivery")
                         .HasColumnType("datetime2");

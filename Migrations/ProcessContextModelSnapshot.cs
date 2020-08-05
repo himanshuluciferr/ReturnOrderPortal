@@ -22,9 +22,7 @@ namespace ReturnOrderPortal.Migrations
             modelBuilder.Entity("ReturnOrderPortal.Models.ProcessResponse", b =>
                 {
                     b.Property<int>("RequestId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DateOfDelivery")
                         .HasColumnType("datetime2");

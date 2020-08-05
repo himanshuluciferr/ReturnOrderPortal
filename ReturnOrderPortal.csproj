@@ -22,6 +22,12 @@
     <Compile Remove="Migrations\20200805051653_keyadded.Designer.cs" />
     <Compile Remove="Migrations\20200805051813_keyadded1.cs" />
     <Compile Remove="Migrations\20200805051813_keyadded1.Designer.cs" />
+    <Compile Remove="Migrations\20200805051910_keyadded.cs" />
+    <Compile Remove="Migrations\20200805051910_keyadded.Designer.cs" />
+    <Compile Remove="Migrations\20200805143554_InitialMigration.cs" />
+    <Compile Remove="Migrations\20200805143554_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200805145302_randomKey.cs" />
+    <Compile Remove="Migrations\20200805145302_randomKey.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
