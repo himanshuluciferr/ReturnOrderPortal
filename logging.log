@@ -2246,3 +2246,238 @@ INFO  10:52:08 Login initiated
 INFO  10:52:13 Authentication initiated
 INFO  10:52:29 ComponentProcessingMicroservice initiated
 INFO  10:52:38 Payment Confirmation initiated
+INFO  12:04:46 Application started. Press Ctrl+C to shut down.
+INFO  12:04:46 Application started. Press Ctrl+C to shut down.
+INFO  12:04:46 Hosting environment: Development
+INFO  12:04:46 Hosting environment: Development
+INFO  12:04:46 Content root path: F:\ReturnOrderPortal
+INFO  12:04:46 Content root path: F:\ReturnOrderPortal
+INFO  12:04:47 Login initiated
+INFO  12:04:47 Login initiated
+INFO  12:04:56 Authentication initiated
+INFO  12:05:48 Authentication initiated
+INFO  12:06:16 Application started. Press Ctrl+C to shut down.
+INFO  12:06:16 Application started. Press Ctrl+C to shut down.
+INFO  12:06:16 Hosting environment: Development
+INFO  12:06:16 Hosting environment: Development
+INFO  12:06:16 Content root path: F:\ReturnOrderPortal
+INFO  12:06:16 Content root path: F:\ReturnOrderPortal
+INFO  12:06:20 Login initiated
+INFO  12:06:20 Login initiated
+INFO  12:06:34 Authentication initiated
+INFO  12:07:01 Authentication initiated
+INFO  12:07:38 ComponentProcessingMicroservice initiated
+INFO  12:10:15 Application started. Press Ctrl+C to shut down.
+INFO  12:10:15 Application started. Press Ctrl+C to shut down.
+INFO  12:10:15 Hosting environment: Development
+INFO  12:10:15 Hosting environment: Development
+INFO  12:10:15 Content root path: F:\ReturnOrderPortal
+INFO  12:10:15 Content root path: F:\ReturnOrderPortal
+INFO  12:10:16 Login initiated
+INFO  12:10:17 Login initiated
+INFO  12:10:23 Authentication initiated
+INFO  12:11:01 ComponentProcessingMicroservice initiated
+INFO  12:12:08 Application started. Press Ctrl+C to shut down.
+INFO  12:12:08 Application started. Press Ctrl+C to shut down.
+INFO  12:12:08 Hosting environment: Development
+INFO  12:12:08 Hosting environment: Development
+INFO  12:12:08 Content root path: F:\ReturnOrderPortal
+INFO  12:12:08 Content root path: F:\ReturnOrderPortal
+INFO  12:12:08 Login initiated
+INFO  12:12:09 Login initiated
+INFO  12:12:16 Authentication initiated
+INFO  12:12:50 ComponentProcessingMicroservice initiated
+INFO  12:13:39 Application started. Press Ctrl+C to shut down.
+INFO  12:13:39 Application started. Press Ctrl+C to shut down.
+INFO  12:13:39 Hosting environment: Development
+INFO  12:13:39 Hosting environment: Development
+INFO  12:13:39 Content root path: F:\ReturnOrderPortal
+INFO  12:13:39 Content root path: F:\ReturnOrderPortal
+INFO  12:13:40 Login initiated
+INFO  12:13:40 Login initiated
+INFO  12:13:58 Authentication initiated
+INFO  12:14:33 ComponentProcessingMicroservice initiated
+INFO  12:16:49 Application started. Press Ctrl+C to shut down.
+INFO  12:16:49 Application started. Press Ctrl+C to shut down.
+INFO  12:16:49 Hosting environment: Development
+INFO  12:16:49 Hosting environment: Development
+INFO  12:16:49 Content root path: F:\ReturnOrderPortal
+INFO  12:16:49 Content root path: F:\ReturnOrderPortal
+INFO  12:16:49 Login initiated
+INFO  12:16:49 Login initiated
+INFO  12:17:03 Authentication initiated
+INFO  12:17:28 ComponentProcessingMicroservice initiated
+INFO  12:19:45 Application started. Press Ctrl+C to shut down.
+INFO  12:19:45 Application started. Press Ctrl+C to shut down.
+INFO  12:19:45 Hosting environment: Development
+INFO  12:19:45 Hosting environment: Development
+INFO  12:19:45 Content root path: F:\ReturnOrderPortal
+INFO  12:19:45 Content root path: F:\ReturnOrderPortal
+INFO  12:19:45 Login initiated
+INFO  12:19:45 Login initiated
+INFO  12:20:01 Authentication initiated
+INFO  12:20:44 Application started. Press Ctrl+C to shut down.
+INFO  12:20:44 Application started. Press Ctrl+C to shut down.
+INFO  12:20:44 Hosting environment: Development
+INFO  12:20:44 Hosting environment: Development
+INFO  12:20:44 Content root path: F:\ReturnOrderPortal
+INFO  12:20:44 Content root path: F:\ReturnOrderPortal
+INFO  12:20:49 Login initiated
+INFO  12:20:54 Authentication initiated
+INFO  03:17:52 Application started. Press Ctrl+C to shut down.
+INFO  03:17:52 Application started. Press Ctrl+C to shut down.
+INFO  03:17:52 Hosting environment: Development
+INFO  03:17:52 Hosting environment: Development
+INFO  03:17:52 Content root path: F:\ReturnOrderPortal
+INFO  03:17:52 Content root path: F:\ReturnOrderPortal
+INFO  03:17:56 Login initiated
+INFO  03:17:56 Login initiated
+INFO  03:18:03 Authentication initiated
+INFO  03:18:15 Authentication initiated
+INFO  03:18:27 ComponentProcessingMicroservice initiated
+INFO  03:18:32 Payment Confirmation initiated
+INFO  03:22:12 Application started. Press Ctrl+C to shut down.
+INFO  03:22:12 Application started. Press Ctrl+C to shut down.
+INFO  03:22:12 Hosting environment: Development
+INFO  03:22:12 Hosting environment: Development
+INFO  03:22:12 Content root path: F:\ReturnOrderPortal
+INFO  03:22:12 Content root path: F:\ReturnOrderPortal
+INFO  03:22:13 Login initiated
+INFO  03:22:14 Login initiated
+INFO  03:22:18 Authentication initiated
+INFO  03:22:27 ComponentProcessingMicroservice initiated
+ERROR 03:22:27 An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'value')
+   at Newtonsoft.Json.Utilities.ValidationUtils.ArgumentNotNull(Object value, String parameterName)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at ReturnOrderPortal.Controllers.UserController.ComponentProcessing(Component component) in F:\ReturnOrderPortal\Controllers\UserController.cs:line 141
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+ERROR 03:22:27 An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'value')
+   at Newtonsoft.Json.Utilities.ValidationUtils.ArgumentNotNull(Object value, String parameterName)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at ReturnOrderPortal.Controllers.UserController.ComponentProcessing(Component component) in F:\ReturnOrderPortal\Controllers\UserController.cs:line 141
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+INFO  03:23:49 Application started. Press Ctrl+C to shut down.
+INFO  03:23:49 Application started. Press Ctrl+C to shut down.
+INFO  03:23:49 Hosting environment: Development
+INFO  03:23:49 Hosting environment: Development
+INFO  03:23:49 Content root path: F:\ReturnOrderPortal
+INFO  03:23:49 Content root path: F:\ReturnOrderPortal
+INFO  03:24:01 Login initiated
+INFO  03:24:02 Login initiated
+INFO  03:24:06 Authentication initiated
+INFO  03:24:15 ComponentProcessingMicroservice initiated
+ERROR 03:24:16 An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'value')
+   at Newtonsoft.Json.Utilities.ValidationUtils.ArgumentNotNull(Object value, String parameterName)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at ReturnOrderPortal.Controllers.UserController.ComponentProcessing(Component component) in F:\ReturnOrderPortal\Controllers\UserController.cs:line 141
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+ERROR 03:24:16 An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'value')
+   at Newtonsoft.Json.Utilities.ValidationUtils.ArgumentNotNull(Object value, String parameterName)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at ReturnOrderPortal.Controllers.UserController.ComponentProcessing(Component component) in F:\ReturnOrderPortal\Controllers\UserController.cs:line 141
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+INFO  03:26:28 Application started. Press Ctrl+C to shut down.
+INFO  03:26:28 Application started. Press Ctrl+C to shut down.
+INFO  03:26:28 Hosting environment: Development
+INFO  03:26:28 Hosting environment: Development
+INFO  03:26:28 Content root path: F:\ReturnOrderPortal
+INFO  03:26:28 Content root path: F:\ReturnOrderPortal
+INFO  03:26:34 Login initiated
+INFO  03:26:35 Login initiated
+INFO  03:26:41 Authentication initiated
+INFO  03:26:49 ComponentProcessingMicroservice initiated
+INFO  03:26:55 Payment Confirmation initiated
+INFO  03:34:01 Application started. Press Ctrl+C to shut down.
+INFO  03:34:01 Application started. Press Ctrl+C to shut down.
+INFO  03:34:01 Hosting environment: Development
+INFO  03:34:01 Hosting environment: Development
+INFO  03:34:01 Content root path: F:\ReturnOrderPortal
+INFO  03:34:01 Content root path: F:\ReturnOrderPortal
+INFO  03:34:12 Login initiated
+INFO  03:34:12 Login initiated
+INFO  03:34:19 Authentication initiated
+INFO  03:34:28 ComponentProcessingMicroservice initiated
+INFO  03:34:32 Payment Confirmation initiated
+INFO  03:56:03 Application started. Press Ctrl+C to shut down.
+INFO  03:56:03 Application started. Press Ctrl+C to shut down.
+INFO  03:56:03 Hosting environment: Development
+INFO  03:56:03 Hosting environment: Development
+INFO  03:56:03 Content root path: F:\ReturnOrderPortal
+INFO  03:56:03 Content root path: F:\ReturnOrderPortal
+INFO  03:56:04 Login initiated
+INFO  03:56:04 Login initiated
+INFO  03:56:32 Authentication initiated
+INFO  03:57:15 ComponentProcessingMicroservice initiated
+INFO  03:57:24 Payment Confirmation initiated

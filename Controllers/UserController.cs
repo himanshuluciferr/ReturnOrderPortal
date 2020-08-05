@@ -120,8 +120,8 @@ namespace ReturnOrderPortal.Controllers
                     IsPriorityRequest = component.IsPriorityRequest
                 };
 
-                //client.DefaultRequestHeaders.Accept.Clear();
-               // client.DefaultRequestHeaders.Add("Authorization", "Bearer " + TokenForLogin);
+               // client.DefaultRequestHeaders.Accept.Clear();
+                //client.DefaultRequestHeaders.Add("Authorization", "Bearer " + TokenForLogin);
                 //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var myJSON = JsonConvert.SerializeObject(components);
 
