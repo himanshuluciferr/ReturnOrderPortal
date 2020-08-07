@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\ReturnOrderPortal\\ReturnOrderPortal.csproj": {}
+    "F:\\Project\\ReturnOrderPortal\\ReturnOrderPortal.csproj": {}
   },
   "projects": {
-    "D:\\Project\\ReturnOrderPortal\\ReturnOrderPortal.csproj": {
+    "F:\\Project\\ReturnOrderPortal\\ReturnOrderPortal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\ReturnOrderPortal\\ReturnOrderPortal.csproj",
+        "projectUniqueName": "F:\\Project\\ReturnOrderPortal\\ReturnOrderPortal.csproj",
         "projectName": "ReturnOrderPortal",
-        "projectPath": "D:\\Project\\ReturnOrderPortal\\ReturnOrderPortal.csproj",
+        "projectPath": "F:\\Project\\ReturnOrderPortal\\ReturnOrderPortal.csproj",
         "packagesPath": "C:\\Users\\HIMANSHU\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\ReturnOrderPortal\\obj\\",
+        "outputPath": "F:\\Project\\ReturnOrderPortal\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

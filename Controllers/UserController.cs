@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Helpers;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ReturnOrderPortal.DataContext;
@@ -24,11 +25,12 @@ namespace ReturnOrderPortal.Controllers
         static string TokenForLogin;
         private readonly ProcessContext db;
         public static ProcessResponse Response = new ProcessResponse();
+        private IConfiguration _config;
 
-
-        public UserController(ProcessContext context)
+        public UserController(ProcessContext context , IConfiguration config)
         {
             db = context;
+            _config = config;
         }
 
         public IActionResult Login()
@@ -41,7 +43,7 @@ namespace ReturnOrderPortal.Controllers
         public ActionResult Authentication(User user)
         {
             _log4net.Info("Authentication initiated");
-            TokenForLogin = GetToken("http://localhost:65486/api/token", user);
+            TokenForLogin = GetToken(_config["Links:AuthorizationMicroService"] + "/token", user);
             if (TokenForLogin == null)
             {
                 ViewBag.Message = String.Format("Invalid Username Or Password");
@@ -126,7 +128,7 @@ namespace ReturnOrderPortal.Controllers
                 var myJSON = JsonConvert.SerializeObject(components);
 
 
-                string uri = string.Format("https://localhost:44392/api/ComponentProcessingMicroservice?json={0}", myJSON);
+                string uri = string.Format(_config["Links:ComponentMicroService"]+"/ComponentProcessingMicroservice?json={0}", myJSON);
 
                 HttpResponseMessage response = await client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
